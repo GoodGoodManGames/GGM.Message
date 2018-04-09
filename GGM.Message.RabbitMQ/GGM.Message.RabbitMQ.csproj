@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Version>1.0.0</Version>
+    <Description>GoodGoodManGames에서 사용하는 RabbitMQ의 래퍼 라이브러리입니다.</Description>
+    <Copyright>
+    </Copyright>
+    <PackageLicenseUrl>https://github.com/GoodGoodManGames/GGM.Application/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/GoodGoodManGames/GGM.Message</PackageProjectUrl>
+    <PackageIconUrl>https://avatars1.githubusercontent.com/u/32609950?s=200&amp;v=4</PackageIconUrl>
+    <RepositoryType>
+    </RepositoryType>
+    <RepositoryUrl>https://github.com/GoodGoodManGames/GGM.Message</RepositoryUrl>
+    <PackageTags>GGM</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.0-rc1" />
+  </ItemGroup>
+
+</Project>

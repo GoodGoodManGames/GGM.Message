@@ -7,7 +7,7 @@ namespace GGM.Message.RabbitMQ
     /// <summary>
     /// MessageQueue를 관리하는 관리자클래스입니다. 사용자는 해당 클래스를 이용하여 메세지를 발행하거나 구독할 수 있습니다.
     /// </summary>
-    public class MessageQueueManager
+    public class MessageQueueManager : IMessageQueueManager
     {
         public MessageQueueManager(MessageQueueConfig config)
         {

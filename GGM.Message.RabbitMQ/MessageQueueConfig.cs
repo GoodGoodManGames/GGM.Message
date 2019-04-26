@@ -11,6 +11,8 @@
 
         public string Exchange { get; set; }
         public string ExchangeType { get; set; }
-        public string RoutingKey { get; set; }
+        // TODO: 추후 여러 Queue를 바인드 할 수 있게끔 수정될 예정입니다.
+        public string QueueName { get; set; }
+        public string RoutingKey { get; set; } = string.Empty;
     }
 }

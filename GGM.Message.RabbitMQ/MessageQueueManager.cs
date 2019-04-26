@@ -11,10 +11,7 @@ namespace GGM.Message.RabbitMQ
     {
         public MessageQueueManager(MessageQueueConfig config)
         {
-            if (config == null)
-                throw new ArgumentNullException(nameof(config));
-
-            Config = config;
+            Config = config ?? throw new ArgumentNullException(nameof(config));
 
             try
             {
@@ -36,7 +33,7 @@ namespace GGM.Message.RabbitMQ
                 );
 
                 // Queue 생성과 바인딩
-                QueueName = _model.QueueDeclare().QueueName;
+                QueueName = _model.QueueDeclare(config.QueueName, exclusive: false, autoDelete: false).QueueName;
                 _model.QueueBind(
                     queue: QueueName,
                     exchange: Config.Exchange,
@@ -48,10 +45,8 @@ namespace GGM.Message.RabbitMQ
             catch (Exception e)
             {
                 // 예외 발생 시 자원 정리
-                if (_connection != null)
-                    _connection.Dispose();
-                if (_model != null)
-                    _model.Dispose();
+                _connection?.Dispose();
+                _model?.Dispose();
 
                 // re-throw
                 throw;
@@ -68,8 +63,8 @@ namespace GGM.Message.RabbitMQ
         /// </summary>
         public string QueueName { get; }
 
-        private IConnection _connection;
-        private IModel _model;
+        private readonly IConnection _connection;
+        private readonly IModel _model;
 
         /// <summary>
         /// MessageQueue가 Shutdown 될 때 호출되는 이벤트입니다.
